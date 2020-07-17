@@ -1,0 +1,6 @@
+{
+  "watch": ["*.rs"],
+  "ext": "rs",
+  "exec": "cargo run",
+  "ignore": ["target/*"]
+}

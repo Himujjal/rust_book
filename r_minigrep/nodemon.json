@@ -1,6 +1,6 @@
 {
   "watch": ["*.rs"],
   "ext": "rs",
-  "exec": "cls && cargo run body poem.txt",
+  "exec": "cls && cargo run you poem.txt",
   "ignore": ["target/*"]
 }

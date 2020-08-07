@@ -1,18 +1,24 @@
-pub fn box_func() {
-  println!("----- Using Box<T> -----");
-
-  let b = Box::new(5);
-  println!("b = {}", b);
-
-  cons_list();
-}
-
 enum List {
-  Cons(i32, Box<List>),
-  Nil,
+    Cons(i32, Box<List>),
+    Nil,
 }
 
-fn cons_list() {
-  use List::{Cons, Nil};
-  let _list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
+fn print_list(list: Box<List>) {
+    match *list {
+        List::Cons(i, list) => {
+            println!("{}, ", i);
+            print_list(list);
+        }
+        List::Nil => {
+            println!("Nil");
+        }
+    }
+}
+
+pub fn boxed() {
+    let list = List::Cons(
+        1,
+        Box::new(List::Cons(2, Box::new(List::Cons(3, Box::new(List::Nil))))),
+    );
+    print_list(Box::new(list));
 }

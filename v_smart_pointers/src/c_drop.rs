@@ -1,24 +1,25 @@
 use std::mem::drop;
 
 struct CustomSmartPointer {
-  data: String,
+    data: String,
 }
 
 impl Drop for CustomSmartPointer {
-  fn drop(&mut self) {
-    println!("Dropping CustomSmartPointer with data `{}`!", self.data);
-  }
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+    }
 }
 
-pub fn _drop_main() {
-  let c = CustomSmartPointer {
-    data: String::from("my stuff"),
-  };
-  let _d = CustomSmartPointer {
-    data: String::from("other stuff"),
-  };
-  println!("CustomSmartPointers created.");
+pub fn dropped() {
+    let _c = CustomSmartPointer {
+        data: String::from("my stuff!"),
+    };
 
-  drop(c); // dropping the pointer
-  println!("CustomSmartPointer dropped before the end of main.");
+    let _d = CustomSmartPointer {
+        data: String::from("other stuff!"),
+    };
+
+    println!("CustomSmartPointers created.");
+    drop(_c);
+    println!("Custom SmartPointer dropped before the end of main");
 }

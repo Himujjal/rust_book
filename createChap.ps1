@@ -1,14 +1,18 @@
-param (
-  [switch] $Lib
-)
-
-$packageName = $args[0] ;
+param ($packageName, [switch] $Lib, [switch] $Code);
 
 if ($Lib) {
   cargo new $packageName --lib ;
-} else {  
+}
+else {  
   cargo new $packageName ;
 }
 
 Set-Location $packageName ;
-nodemon -e rs,toml --exec "cls && cargo run" --watch "src/*.rs" --watch cargo.toml
+
+if ($code) {
+  code .
+}
+
+if (!$Lib) {
+  nodemon -e rs, toml --exec "cls && cargo fmt && cargo run" --watch "src/*.rs" --watch cargo.toml
+}

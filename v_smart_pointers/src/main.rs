@@ -1,13 +1,15 @@
 mod a_box;
 mod b_deref;
 mod c_drop;
-mod d_ref_smart_pointer;
+mod d_rc;
 mod e_ref_cell;
+mod f_ref_cycle;
 
 fn main() {
-    a_box::box_func();
-    b_deref::_deref();
-    c_drop::_drop_main();
-    d_ref_smart_pointer::_ref_smart_pointers_main();
-    e_ref_cell::ref_cell_main();
+    a_box::boxed();
+    b_deref::deref();
+    c_drop::dropped();
+    d_rc::reference_counted();
+    e_ref_cell::interior_mutability();
+    f_ref_cycle::reference_cycle();
 }

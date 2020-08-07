@@ -66,6 +66,11 @@ fn _vectors() {
             _ => println!("Hello"),
         }
     }
+
+    for (i, ele) in row.iter().enumerate() {
+        println!("index: {}", i);
+        println!("element: {:?}", ele);
+    }
 }
 
 fn _strings() {

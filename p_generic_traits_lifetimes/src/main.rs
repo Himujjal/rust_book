@@ -114,6 +114,7 @@ fn traits() {
     pub trait Summary {
         fn summarize(&self) -> String;
         fn summarize_author(&self) -> String;
+        // BELOW: Default implementation
         fn extra(&self) -> String {
             format!("[Read more from {}...]", self.summarize_author()) // default implementations
         }
@@ -174,7 +175,7 @@ fn traits() {
 
     println!("1 new article: {}", article.summarize());
 
-    pub fn _notify(item: impl Summary) {
+    pub fn _notify(item: &impl Summary) {
         println!("Breaking news!: {}", item.summarize());
     }
 
